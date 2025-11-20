@@ -1,0 +1,77 @@
+===========================================
+  COMO RODAR O SISTEMA LOCALMENTE
+===========================================
+
+📋 PRÉ-REQUISITOS:
+- Node.js instalado
+- MongoDB instalado (ou MongoDB Atlas)
+
+===========================================
+  PASSO 1: CONFIGURAR O BACKEND (API)
+===========================================
+
+1. Entre na pasta do backend:
+   cd api-agendamentos
+
+2. Instale as dependências:
+   npm install
+
+3. Crie um arquivo .env na raiz de api-agendamentos com:
+   
+   PORT=5000
+   MONGO_URI=mongodb://localhost:27017/agendamentos
+   JWT_SECRET=minha_chave_secreta_123456
+
+   (Para MongoDB Atlas, use: mongodb+srv://usuario:senha@cluster.mongodb.net/agendamentos)
+
+4. Inicie o servidor:
+   npm run dev
+
+   O backend estará em: http://localhost:5000
+
+===========================================
+  PASSO 2: CONFIGURAR O FRONTEND
+===========================================
+
+1. Abra um NOVO terminal e entre na pasta do frontend:
+   cd frontend-agendamentos
+
+2. Instale as dependências:
+   npm install
+
+3. Inicie o servidor:
+   npm run dev
+
+   O frontend estará em: http://localhost:3000
+
+===========================================
+  MÉTODO RÁPIDO (Windows)
+===========================================
+
+Execute o arquivo: iniciar.bat
+(Ele abrirá ambos os servidores automaticamente)
+
+===========================================
+  VERIFICAÇÃO
+===========================================
+
+✅ Backend: http://localhost:5000
+   Deve mostrar: "🚀 API do Sistema de Consultas está online!"
+
+✅ Frontend: http://localhost:3000
+   Deve abrir a tela de login
+
+===========================================
+  PRIMEIROS PASSOS
+===========================================
+
+1. Acesse http://localhost:3000/cadastro
+2. Crie uma conta (paciente ou profissional)
+3. Faça login em http://localhost:3000/login
+4. Agende uma consulta!
+
+===========================================
+
+
+
+

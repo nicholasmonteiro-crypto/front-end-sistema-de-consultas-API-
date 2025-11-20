@@ -1,0 +1,92 @@
+.consultas-container {
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.consultas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.consultas-header h1 {
+  color: #333;
+}
+
+.consultas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.consulta-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.consulta-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.consulta-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge-agendada {
+  background-color: #007bff;
+  color: white;
+}
+
+.badge-concluida {
+  background-color: #28a745;
+  color: white;
+}
+
+.badge-cancelada {
+  background-color: #dc3545;
+  color: white;
+}
+
+.consulta-info {
+  margin-bottom: 15px;
+}
+
+.consulta-item {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.consulta-item strong {
+  color: #333;
+  margin-right: 5px;
+}
+
+.consulta-actions {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+
+
+

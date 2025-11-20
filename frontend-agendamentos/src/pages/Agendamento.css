@@ -1,0 +1,26 @@
+.agendamento-container {
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.agendamento-container h1 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+  font-size: 12px;
+}
+
+
+
+
