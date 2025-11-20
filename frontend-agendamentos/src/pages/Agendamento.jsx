@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { consultaService } from '../services/consultaService';
-import { authService } from '../services/authService';
+import { usuarioService } from '../services/usuarioService';
 import { AuthContext } from '../context/AuthContext';
 import './Agendamento.css';
 
@@ -28,11 +28,27 @@ const Agendamento = () => {
 
   const carregarUsuarios = async () => {
     try {
-      // Como não temos endpoint para listar usuários, vamos usar uma abordagem alternativa
-      // Por enquanto, vamos permitir que o usuário digite o ID ou usar o próprio usuário
-      setLoadingUsers(false);
+      setLoadingUsers(true);
+      
+      // Se for paciente, carrega lista de profissionais
+      if (usuario.tipo === 'paciente') {
+        const response = await usuarioService.listarProfissionais();
+        if (response.sucesso) {
+          setProfissionais(response.profissionais);
+        }
+      }
+      
+      // Se for profissional, carrega lista de pacientes
+      if (usuario.tipo === 'profissional') {
+        const response = await usuarioService.listarPacientes();
+        if (response.sucesso) {
+          setPacientes(response.pacientes);
+        }
+      }
     } catch (error) {
       console.error('Erro ao carregar usuários:', error);
+      setErro('Erro ao carregar lista de usuários');
+    } finally {
       setLoadingUsers(false);
     }
   };
@@ -93,31 +109,39 @@ const Agendamento = () => {
 
             {usuario.tipo === 'profissional' && (
               <div className="form-group">
-                <label>ID do Paciente *</label>
-                <input
-                  type="text"
+                <label>Paciente *</label>
+                <select
                   name="pacienteId"
                   value={formData.pacienteId}
                   onChange={handleChange}
                   required
-                  placeholder="Digite o ID do paciente"
-                />
-                <small>Nota: Você precisará do ID do paciente para agendar</small>
+                >
+                  <option value="">Selecione um paciente</option>
+                  {pacientes.map((paciente) => (
+                    <option key={paciente._id} value={paciente._id}>
+                      {paciente.nome} - {paciente.email}
+                    </option>
+                  ))}
+                </select>
               </div>
             )}
 
             {usuario.tipo === 'paciente' && (
               <div className="form-group">
-                <label>ID do Profissional *</label>
-                <input
-                  type="text"
+                <label>Profissional *</label>
+                <select
                   name="profissionalId"
                   value={formData.profissionalId}
                   onChange={handleChange}
                   required
-                  placeholder="Digite o ID do profissional"
-                />
-                <small>Nota: Você precisará do ID do profissional para agendar</small>
+                >
+                  <option value="">Selecione um profissional</option>
+                  {profissionais.map((profissional) => (
+                    <option key={profissional._id} value={profissional._id}>
+                      {profissional.nome} - {profissional.email}
+                    </option>
+                  ))}
+                </select>
               </div>
             )}
 
